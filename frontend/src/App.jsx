@@ -317,13 +317,20 @@ function Scene5Swipe({ onNext, config }) {
         </AnimatePresence>
       </div>
 
-      <motion.button
-        whileTap={{ scale: 0.95 }}
-        onClick={onNext}
-        className="px-8 py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full text-white font-bold text-xl shadow-[0_0_15px_rgba(255,0,255,0.8)]"
-      >
-        Open My Message
-      </motion.button>
+      <AnimatePresence>
+        {cards.length === 0 && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onNext}
+            className="px-8 py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full text-white font-bold text-xl shadow-[0_0_15px_rgba(255,0,255,0.8)]"
+          >
+            Open My Message
+          </motion.button>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
